@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadar Optique - Opticien Rapide et Abordable à Safi</title>
+    <meta name="description" content="Opticien rapide et abordable à Safi. Montures + verres à partir de 200 DH seulement, prêts en 20 minutes. Service express sans compromis sur la qualité.">
+    
+    <!-- Inline critical CSS -->
+    <style>
+        /* Critical CSS */
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; margin: 0; padding: 0; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        /* Add more critical styles here */
+        
+        /* Loading animation */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { opacity: 0; animation: fadeIn 0.5s ease-out forwards; }
+    </style>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo bgr.webp">
+    
+    <!-- Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"></noscript>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+                        primary: '#FFC61B',
+                        secondary: '#FEF3D5',
+                        accent: '#FFC61B',
+                        dark: '#5E5F62',
+                        light: '#FEFEFE'
+                    },
+                    fontFamily: {
+                        heading: ['System-Ui', 'serif'],
+                        body: ['Poppins', 'serif'],
+                    },
+                    spacing: {
+                        '128': '32rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body text-dark bg-light antialiased">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-primary transition-opacity duration-500">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="text-white font-medium">Chargement...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed w-full z-40 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-2">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+                        <img src="images/logo bgr.webp" alt="Nadar Optique Logo" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xl md:text-2xl font-heading font-bold text-primary">Nadar Optique</span>
+                    <!-- Promo Mini -->
+                    <a href="#booking" class="no-underline">
+                        <div id="promoMini" class="ml-4 py-1 px-3 bg-red-600 text-white text-xs font-bold rounded-full flex items-center hover:bg-red-700 transition-colors">
+                            <span class="whitespace-nowrap">Offre Spéciale</span>
+                            <span id="promoMiniTime" class="ml-2 font-mono">24:00:00</span>
+                        </div>
+                    </a>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-10">
+                    <a href="#home" class="nav-link text-dark hover:text-accent font-medium">Accueil</a>
+                    <a href="#services" class="nav-link text-dark hover:text-accent font-medium">Services</a>
+                    <a href="#gallery" class="nav-link text-dark hover:text-accent font-medium">Galerie</a>
+                    <a href="#brands" class="nav-link text-dark hover:text-accent font-medium">Marques</a>
+                    <a href="#contact" class="nav-link text-dark hover:text-accent font-medium">Contact</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-primary focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-dark hover:text-accent font-medium py-2 border-b border-gray-100">Accueil</a>
+                    <a href="#services" class="text-dark hover:text-accent font-medium py-2 border-b border-gray-100">Services</a>
+                    <a href="#gallery" class="text-dark hover:text-accent font-medium py-2 border-b border-gray-100">Galerie</a>
+                    <a href="#brands" class="text-dark hover:text-accent font-medium py-2 border-b border-gray-100">Marques</a>
+                    <a href="#contact" class="text-dark hover:text-accent font-medium py-2">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-dark/60 z-10"></div>
+        <div class="absolute inset-0">
+            <img src="images/hero image glasses.webp" 
+                 alt="Boutique Nadar Optique" 
+                 class="w-full h-full object-cover object-center">
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-20 text-center animate-fade-in">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mt-6 mb-6">
+                <span class="block text-white">Lunettes Express</span>
+                <span class="block text-accent">200 DH seulement</span>
+            </h1>
+            
+            <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+                Montures + verres à partir de 200 DH, prêtes en seulement 20 minutes. Service rapide et professionnel sans compromis sur la qualité.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#booking" class="bg-accent hover:bg-accent/90 text-white font-medium py-3 px-8 rounded-full transition-slow flex items-center justify-center space-x-2">
+                    <i class="far fa-calendar-check"></i>
+                    <span>Prendre RDV</span>
+                </a>
+                <a href="tel:0523395763" class="bg-white hover:bg-white/90 text-primary font-medium py-3 px-8 rounded-full transition-slow flex items-center justify-center space-x-2">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>05 23 39 57 63</span>
+                </a>
+                <a href="https://wa.me/212662786354" class="bg-green-600 hover:bg-green-800 text-white font-medium py-3 px-8 rounded-full transition-slow flex items-center justify-center space-x-2">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>06 62 78 63 54</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-0 right-0 z-20 text-center animate-fade-in delay-300">
+            <a href="#services" class="inline-block animate-bounce">
+                <i class="fas fa-chevron-down text-white text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- USP Banner -->
+    <div class="bg-primary text-white py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <div class="flex items-center">
+                    <i class="fas fa-bolt text-accent text-2xl mr-3"></i>
+                    <p class="font-medium text-center md:text-left">
+                        Montures + verres à partir de 200 DH seulement, prêtes en 20 minutes!
+                    </p>
+                </div>
+                <a href="#services" class="text-accent hover:text-accent/80 font-semibold flex items-center">
+                    En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent font-medium uppercase tracking-wider">Nos Prestations</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 mb-4">Services Express</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-slow hover:shadow-xl hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center">
+                        <i class="fas fa-stopwatch text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading font-bold mb-3">Service Rapide</h3>
+                        <p class="text-gray-600 mb-6">
+                            Vos lunettes prêtes en seulement 20 minutes. Nous comprenons que votre temps est précieux.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>Montures + verres en 20 min</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>Pas de longues attentes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>Service prioritaire disponible</span>
+                            </li>
+                        </ul>
+                        <a href="#booking" class="text-primary hover:text-accent font-medium flex items-center">
+                            Prendre RDV <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-slow hover:shadow-xl hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-accent to-accent/80 flex items-center justify-center">
+                        <i class="fas fa-tags text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading font-bold mb-3">Prix Abordables</h3>
+                        <p class="text-gray-600 mb-6">
+                            Des lunettes complètes à partir de 200 DH seulement. Qualité professionnelle à prix imbattable.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>À partir de 200 DH</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>Paiement en plusieurs fois</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>Garantie 1 an incluse</span>
+                            </li>
+                        </ul>
+                        <a href="#brands" class="text-primary hover:text-accent font-medium flex items-center">
+                            Découvrir <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-slow hover:shadow-xl hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-dark to-dark/80 flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading font-bold mb-3">Examens Complets</h3>
+                        <p class="text-gray-600 mb-6">
+                            Examen de vue précis avec des équipements modernes pour une correction visuelle optimale.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>Technologie de pointe</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>Opticiens diplômés</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mt-1 mr-2"></i>
+                                <span>Résultats immédiats</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-primary hover:text-accent font-medium flex items-center">
+                            Nous consulter <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <div class="relative">
+                        <img src="images/store.webp" 
+                             alt="Boutique Nadar Optique" 
+                             class="rounded-xl shadow-lg w-full" loading="lazy">
+                        <div class="absolute -bottom-6 -right-6 bg-accent p-6 rounded-xl shadow-lg">
+                            <div class="text-white text-center">
+                                <span class="block text-3xl font-heading font-bold">10+</span>
+                                <span class="block uppercase text-sm tracking-wider">Ans d'expérience</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <span class="text-accent font-medium uppercase tracking-wider">Notre Philosophie</span>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 mb-6">Rapidité & Qualité</h2>
+                    
+                    <p class="text-gray-600 mb-6">
+                        Depuis 2013, Nadar Optique révolutionne l'optique à Safi avec son concept unique : des lunettes de qualité à prix abordable, prêtes en seulement 20 minutes. Notre engagement : vous offrir une vision parfaite sans vous faire attendre.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 text-primary p-2 rounded-lg mr-4">
+                                <i class="fas fa-stopwatch text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold mb-1">Service Express</h4>
+                                <p class="text-gray-600">Vos lunettes montées et ajustées en seulement 20 minutes, sans compromis sur la qualité.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 text-primary p-2 rounded-lg mr-4">
+                                <i class="fas fa-wallet text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold mb-1">Prix Imbattables</h4>
+                                <p class="text-gray-600">Des lunettes complètes à partir de 200 DH seulement, avec des verres de qualité.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 text-primary p-2 rounded-lg mr-4">
+                                <i class="fas fa-users text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold mb-1">Clientèle Satisfaite</h4>
+                                <p class="text-gray-600">Plus de 5000 clients satisfaits par notre service rapide et professionnel.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-flex items-center text-primary hover:text-accent font-medium">
+                        En savoir plus sur nous <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent font-medium uppercase tracking-wider">Notre Univers</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 mb-4">Galerie d'Inspiration</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="images/store.webp" 
+                         alt="Boutique Nadar Optique" 
+                         class="w-full h-80 object-cover transition-slow group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-slow">
+                        <div>
+                            <h3 class="text-white font-heading text-xl font-bold mb-2">Notre Boutique</h3>
+                            <p class="text-white/80">Un espace moderne et convivial au cœur de Safi.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="images/tech.jpg" 
+                         alt="Atelier de montage" 
+                         class="w-full h-80 object-cover transition-slow group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-slow">
+                        <div>
+                            <h3 class="text-white font-heading text-xl font-bold mb-2">Atelier Express</h3>
+                            <p class="text-white/80">Notre laboratoire équipé pour un montage en 20 minutes.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="images/client.jpg" 
+                         alt="Client satisfait" 
+                         class="w-full h-80 object-cover transition-slow group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-slow">
+                        <div>
+                            <h3 class="text-white font-heading text-xl font-bold mb-2">Clients Satisfaits</h3>
+                            <p class="text-white/80">Votre satisfaction est notre priorité absolue.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="images/frames.jpg" 
+                         alt="Lunettes abordables" 
+                         class="w-full h-80 object-cover transition-slow group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-slow">
+                        <div>
+                            <h3 class="text-white font-heading text-xl font-bold mb-2">Lunettes Abordables</h3>
+                            <p class="text-white/80">À partir de 200 DH seulement, montures + verres.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="images/diagnostic.webp" 
+                         alt="Examen de la vue" 
+                         class="w-full h-80 object-cover transition-slow group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-slow">
+                        <div>
+                            <h3 class="text-white font-heading text-xl font-bold mb-2">Examen Précis</h3>
+                            <p class="text-white/80">Un diagnostic complet avec des équipements modernes.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="images/frames.jpg" 
+                         alt="Collection de montures" 
+                         class="w-full h-80 object-cover transition-slow group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-slow">
+                        <div>
+                            <h3 class="text-white font-heading text-xl font-bold mb-2">Large Choix</h3>
+                            <p class="text-white/80">Des centaines de modèles pour tous les styles et budgets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section id="brands" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent font-medium uppercase tracking-wider">Nos Partenaires</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 mb-4">Marques Prestigieuses</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Ray-Ban Logo -->
+                <div class="bg-light rounded-xl p-6 flex items-center justify-center h-32 transition-slow hover:shadow-lg hover:-translate-y-1">
+                    <img src="images/brands/rayban.webp" 
+                         alt="Ray-Ban" 
+                         class="h-32 object-contain" loading="lazy">
+                </div>
+                
+                <!-- Gucci Logo -->
+                <div class="bg-light rounded-xl p-6 flex items-center justify-center h-32 transition-slow hover:shadow-lg hover:-translate-y-1">
+                    <img src="images/brands/gucci-logo-49106.webp" 
+                         alt="Gucci" 
+                         class="h-20 object-contain" loading="lazy">
+                </div>
+                
+                <!-- Oakley Logo -->
+                <div class="bg-light rounded-xl p-6 flex items-center justify-center h-32 transition-slow hover:shadow-lg hover:-translate-y-1">
+                    <img src="images/brands/oakley.webp" 
+                         alt="Oakley" 
+                         class="h-32 object-contain" loading="lazy">
+                </div>
+                <!-- Dior Logo -->
+                <div class="bg-light rounded-xl p-8 flex items-center justify-center h-32 transition-slow hover:shadow-lg hover:-translate-y-1">
+                    <img src="images/brands/dior.webp" 
+                         alt="Dior" 
+                         class="h-28 object-contain" loading="lazy">
+                </div>
+                <div class="bg-light rounded-xl p-8 flex items-center justify-center h-32 transition-slow hover:shadow-lg hover:-translate-y-1">
+                    <img src="images/brands/prada.webp" 
+                         alt="Prada" 
+                         class="h-28 object-contain" loading="lazy">
+                </div>
+                <div class="bg-light rounded-xl p-8 flex items-center justify-center h-32 transition-slow hover:shadow-lg hover:-translate-y-1">
+                    <img src="images/brands/versace.webp" 
+                         alt="Versace" 
+                         class="h-24 object-contain" loading="lazy">
+                </div>
+                <div class="bg-light rounded-xl p-8 flex items-center justify-center h-32 transition-slow hover:shadow-lg hover:-translate-y-1">
+                    <img src="images/brands/tom-ford.webp" 
+                         alt="Tom Ford" 
+                         class="h-28 object-contain" loading="lazy">
+                </div>
+                <div class="bg-light rounded-xl p-8 flex items-center justify-center h-32 transition-slow hover:shadow-lg hover:-translate-y-1">
+                    <img src="images/brands/essilor.webp" 
+                         alt="Essilor" 
+                         class="h-32 object-contain" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent font-medium uppercase tracking-wider">Témoignages</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 mb-4">Ce Que Disent Nos Clients</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-black/60 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-white mr-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold">Fatima Z.</h4>
+                            <div class="flex text-accent">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic">
+                        "Je suis impressionnée par la rapidité du service. Mes lunettes étaient prêtes en 15 minutes seulement! Et pour seulement 250 DH avec des verres anti-reflets. Je recommande vivement Nadar Optique."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-black/60 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-white mr-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold">Mehdi K.</h4>
+                            <div class="flex text-accent">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic">
+                        "Enfin un opticien qui comprend que le temps c'est de l'argent! J'ai pu avoir mes nouvelles lunettes pendant ma pause déjeuner. Prix très correct pour la qualité offerte. Service au top!"
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-black/60 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-white mr-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold">Samira A.</h4>
+                            <div class="flex text-accent">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic">
+                        "J'avais besoin de lunettes en urgence et tous les opticiens me disaient 1 semaine d'attente. Nadar Optique m'a préparé mes lunettes en 20 minutes chrono! Et le prix était imbattable. Merci!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 text-white p-12 flex flex-col justify-center" style="background-image: radial-gradient(circle, orange, transparent 20%, orangered); background-repeat: no-repeat; background-color: orange;">
+                        <div class="flex justify-center mb-6">
+                            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-lg">
+                                <img src="images/logo bgr.webp" alt="Nadar Optique Logo" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                        </div>
+                        <h2 class="text-3xl font-heading font-bold mb-6 text-center">Prenez Rendez-vous</h2>
+                        <p class="mb-8">
+                            Réservez en ligne votre consultation ou commandez vos lunettes express. Notre équipe vous contactera pour confirmer votre rendez-vous.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt text-accent mr-4"></i>
+                                <span>05 23 39 57 63</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt text-accent mr-4"></i>
+                                <span>06 62 78 63 54 (WhatsApp)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-accent mr-4"></i>
+                                <span>contact@devaxio.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-accent mr-4"></i>
+                                <span>Av. Moulay Idriss 1er, Safi 46000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-12">
+                        <h2 class="text-3xl font-heading font-bold mb-6 text-center">Form de rendez-vous</h2>
+                        <form id="bookingForm" class="space-y-6">
+                            <div>
+                                <label for="bookingName" class="block text-gray-700 font-medium mb-2">Nom Complet *</label>
+                                <input type="text" id="bookingName" name="bookingName" required 
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="bookingEmail" class="block text-gray-700 font-medium mb-2">Email *</label>
+                                <input type="email" id="bookingEmail" name="bookingEmail" required 
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="bookingPhone" class="block text-gray-700 font-medium mb-2">Téléphone *</label>
+                                <input type="tel" id="bookingPhone" name="bookingPhone" required 
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="bookingService" class="block text-gray-700 font-medium mb-2">Service *</label>
+                                <select id="bookingService" name="bookingService" required 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Sélectionnez un service</option>
+                                    <option value="eye-exam">Examen de vue</option>
+                                    <option value="express-glasses">Lunettes express</option>
+                                    <option value="contact-lenses">Lentilles de contact</option>
+                                    <option value="repair">Réparation de lunettes</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="bookingDate" class="block text-gray-700 font-medium mb-2">Date souhaitée *</label>
+                                <input type="date" id="bookingDate" name="bookingDate" required 
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="bookingMessage" class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea id="bookingMessage" name="bookingMessage" rows="3" 
+                                          class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-accent hover:bg-accent/90 text-white font-medium py-3 px-6 rounded-lg transition-slow flex items-center justify-center space-x-2">
+                                <i class="far fa-calendar-check"></i>
+                                <span>Réserver Maintenant</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent font-medium uppercase tracking-wider">Contactez-nous</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 mb-4">Nous Sommes à Votre Écoute</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+<div class="bg-light rounded-xl p-8 shadow-lg">
+    <h3 class="text-2xl font-heading font-bold mb-6">Informations de Contact</h3>
+    
+    <div class="space-y-6">
+        <div class="flex items-start">
+            <div class="bg-primary/10 text-primary p-3 rounded-lg mr-4">
+                <i class="fas fa-map-marker-alt text-lg"></i>
+            </div>
+            <div>
+                <h4 class="font-heading font-bold mb-1">Adresse</h4>
+                <p class="text-gray-600">Av. Moulay Idriss 1er, Safi 46000</p>
+            </div>
+        </div>
+        
+        <div class="flex items-start">
+            <div class="bg-primary/10 text-primary p-3 rounded-lg mr-4">
+                <i class="fas fa-phone-alt text-lg"></i>
+            </div>
+            <div>
+                <h4 class="font-heading font-bold mb-1">Téléphone</h4>
+                <a href="tel:0523395763" class="text-gray-600 hover:text-primary">05 23 39 57 63</a><br>
+                <a href="https://wa.me/212662786354" class="text-gray-600 hover:text-primary">06 62 78 63 54 (WhatsApp)</a>
+            </div>
+        </div>
+        
+        <div class="flex items-start">
+            <div class="bg-primary/10 text-primary p-3 rounded-lg mr-4">
+                <i class="fas fa-envelope text-lg"></i>
+            </div>
+            <div>
+                <h4 class="font-heading font-bold mb-1">Email</h4>
+                <a href="mailto:contact@devaxio.com" class="text-gray-600 hover:text-primary">contact@devaxio.com</a>
+            </div>
+        </div>
+        
+        <div class="flex items-start">
+            <div class="bg-primary/10 text-primary p-3 rounded-lg mr-4">
+                <i class="fas fa-clock text-lg"></i>
+            </div>
+            <div>
+                <h4 class="font-heading font-bold mb-1">Horaires d'Ouverture</h4>
+                <p class="text-gray-600 mb-1">Lundi - Vendredi: 9h00 - 13h00 / 15h00 - 20h00</p>
+                <p class="text-gray-600">Samedi: 9h00 - 13h00</p>
+                <p class="text-gray-600">Dimanche: Fermé</p>
+                
+                <!-- Status Indicator -->
+                <div id="shopStatus" class="mt-3 flex items-center">
+                    <span id="statusIcon" class="mr-2 text-xl"></span>
+                    <span id="statusText" class="font-medium"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-8">
+        <h4 class="font-heading font-bold mb-4">Suivez-nous</h4>
+        <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-primary hover:bg-primary/90 text-white rounded-full flex items-center justify-center transition-slow">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary hover:bg-primary/90 text-white rounded-full flex items-center justify-center transition-slow">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary hover:bg-primary/90 text-white rounded-full flex items-center justify-center transition-slow">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function checkShopStatus() {
+        const now = new Date();
+        const day = now.getDay(); // 0 (Sunday) to 6 (Saturday)
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const currentTime = hours + (minutes / 100);
+
+        let isOpen = false;
+        
+        // Check opening hours
+        if (day >= 1 && day <= 5) { // Monday to Friday
+            // Morning session (9:00 - 13:00)
+            const isMorning = currentTime >= 9.00 && currentTime < 13.00;
+            // Afternoon session (15:00 - 20:00)
+            const isAfternoon = currentTime >= 15.00 && currentTime < 20.00;
+            isOpen = isMorning || isAfternoon;
+        } else if (day === 6) { // Saturday
+            isOpen = currentTime >= 9.00 && currentTime < 13.00;
+        } // Sunday is always closed
+
+        // Update status display
+        const statusIcon = document.getElementById('statusIcon');
+        const statusText = document.getElementById('statusText');
+        
+        if (isOpen) {
+            statusIcon.innerHTML = '<i class="fas fa-door-open text-green-500"></i>';
+            statusText.textContent = 'Ouvert maintenant';
+            statusText.className = 'font-medium text-green-600';
+        } else {
+            statusIcon.innerHTML = '<i class="fas fa-door-closed text-red-500"></i>';
+            statusText.textContent = 'Fermé actuellement';
+            statusText.className = 'font-medium text-red-600';
+        }
+    }
+
+    // Check status on load and every minute
+    checkShopStatus();
+    setInterval(checkShopStatus, 60000);
+});
+</script>
+                
+                <!-- Contact Form -->
+                <div class="bg-light rounded-xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-heading font-bold mb-6">Envoyez-nous un Message</h3>
+                    
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="contactName" class="block text-gray-700 font-medium mb-2">Nom *</label>
+                                <input type="text" id="contactName" name="contactName" required 
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="contactEmail" class="block text-gray-700 font-medium mb-2">Email *</label>
+                                <input type="email" id="contactEmail" name="contactEmail" required 
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="contactSubject" class="block text-gray-700 font-medium mb-2">Sujet *</label>
+                            <input type="text" id="contactSubject" name="contactSubject" required 
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="contactMessage" class="block text-gray-700 font-medium mb-2">Message *</label>
+                            <textarea id="contactMessage" name="contactMessage" rows="5" required 
+                                      class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-slow flex items-center justify-center space-x-2">
+                            <i class="far fa-paper-plane"></i>
+                            <span>Envoyer le Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full bg-gray-100" id="map-container">
+        <div class="h-full w-full flex items-center justify-center">
+            <div class="animate-pulse">
+                <i class="fas fa-map-marker-alt text-4xl text-primary"></i>
+                <p class="mt-2 text-gray-600">Chargement de la carte...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promo Popup -->
+    <div id="promoPopup" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 hidden">
+        <div class="bg-white rounded-xl max-w-lg w-full mx-4 relative overflow-hidden">
+            <!-- Close Button -->
+            <button id="closePromo" class="absolute top-4 right-4 text-3xl font-bold text-red-600 hover:text-red-700">&times;</button>
+            
+            <!-- Tag -->
+            <div class="bg-red-600 text-white text-sm font-bold uppercase tracking-wider py-1 px-3 inline-block rounded-br-lg">
+                Offre Limitée
+            </div>
+            
+            <!-- Content -->
+            <div class="p-6 pt-4">
+                <h3 class="text-2xl font-heading font-bold text-gray-900 mb-2">Offre Spéciale</h3>
+                <h4 class="text-xl text-primary font-medium mb-4">Lunettes complètes à 200 DH seulement, prêtes en 20 minutes!</h4>
+                <p class="text-gray-600 mb-6">
+                    Profitez de notre offre exceptionnelle pour des lunettes de qualité à prix imbattable. Offre valable pour une durée limitée uniquement.
+                </p>
+                
+                <!-- Countdown -->
+                <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                    <p class="text-center text-gray-700 font-medium mb-3">Offre valable jusqu'à :</p>
+                    <div id="countdown" class="flex justify-center gap-3">
+                        <div class="text-center">
+                            <div class="bg-primary text-white text-2xl font-bold rounded-lg w-16 h-16 flex items-center justify-center">24</div>
+                            <span class="text-xs text-gray-500 mt-1 block">Heures</span>
+                        </div>
+                        <div class="text-3xl font-bold text-primary flex items-center">:</div>
+                        <div class="text-center">
+                            <div class="bg-primary text-white text-2xl font-bold rounded-lg w-16 h-16 flex items-center justify-center">00</div>
+                            <span class="text-xs text-gray-500 mt-1 block">Minutes</span>
+                        </div>
+                        <div class="text-3xl font-bold text-primary flex items-center">:</div>
+                        <div class="text-center">
+                            <div class="bg-primary text-white text-2xl font-bold rounded-lg w-16 h-16 flex items-center justify-center">00</div>
+                            <span class="text-xs text-gray-500 mt-1 block">Secondes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#booking" class="block w-full bg-accent hover:bg-accent/90 text-white text-center py-3 px-6 rounded-lg font-medium transition-colors" onclick="document.getElementById('promoPopup').classList.add('hidden'); document.body.style.overflow = 'auto';">
+                    Prendre Rendez-vous Maintenant
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="images/logo bgr.webp" alt="Nadar Optique Logo" class="w-10 h-10 rounded-full overflow-hidden mr-3>
+                        <span class="text-xl font-heading font-bold">Nadar Optique</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Opticien rapide et abordable à Safi, spécialisé dans les lunettes express à partir de 200 DH, prêtes en seulement 20 minutes.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-slow">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-slow">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-slow">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-heading font-bold mb-6">Liens Rapides</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-slow">Accueil</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-slow">Services</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition-slow">Galerie</a></li>
+                        <li><a href="#brands" class="text-gray-400 hover:text-white transition-slow">Marques</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-slow">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-heading font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-slow">Lunettes express</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-slow">Examens de vue</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-slow">Lentilles de contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-slow">Réparations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-slow">Vérification gratuite</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-lg font-heading font-bold mb-6">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">
+                        Abonnez-vous pour recevoir nos offres exclusives et conseils pour vos yeux.
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" 
+                               class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-dark">
+                        <button type="submit" class="bg-accent hover:bg-accent/90 text-white px-4 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 Nadar Optique. Tous droits réservés.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-slow">Mentions légales</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-slow">Politique de confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-slow">Conditions générales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary hover:bg-accent text-white rounded-full flex items-center justify-center shadow-lg transition-slow opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script defer>
+        // Function to load scripts dynamically
+        function loadScript(src, callback) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.defer = true;
+            if (callback) script.onload = callback;
+            document.body.appendChild(script);
+        }
+
+        // Load scripts after DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load AOS animation library
+            loadScript('https://unpkg.com/aos@next/dist/aos.js', function() {
+                AOS.init({
+                    duration: 800,
+                    once: true
+                });
+            });
+
+            // Preloader
+            window.addEventListener('load', function() {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            });
+            
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            
+            // Form Submissions
+            document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would typically send the form data to your server
+                alert('Merci pour votre demande de rendez-vous. Nous vous contacterons sous peu pour confirmation.');
+                this.reset();
+            });
+            
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would typically send the form data to your server
+                alert('Merci pour votre message. Nous vous répondrons dans les plus brefs délais.');
+                this.reset();
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animate elements when they come into view
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.animate-fade-in');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            window.addEventListener('load', animateOnScroll);
+
+            // Initialize popup and countdown
+            const promoPopup = document.getElementById('promoPopup');
+            const closeBtn = document.getElementById('closePromo');
+            const promoMini = document.getElementById('promoMini');
+            const promoMiniTime = document.getElementById('promoMiniTime');
+            
+            // Countdown function for both popup and mini promo
+            function updateCountdown(endTime, isMini = false) {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+                
+                if (distance < 0) {
+                    if (isMini) {
+                        promoMini.classList.add('hidden');
+                    } else {
+                        document.getElementById('countdown').innerHTML = "L'offre a expiré";
+                    }
+                    return false;
+                }
+                
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                if (isMini) {
+                    promoMiniTime.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                } else {
+                    const countdownElements = document.querySelectorAll('#countdown > div');
+                    if (countdownElements.length >= 5) {
+                        countdownElements[0].firstElementChild.textContent = hours.toString().padStart(2, '0');
+                        countdownElements[2].firstElementChild.textContent = minutes.toString().padStart(2, '0');
+                        countdownElements[4].firstElementChild.textContent = seconds.toString().padStart(2, '0');
+                    }
+                }
+                return true;
+            }
+            
+            // Check for existing countdown or start a new one
+            const now = new Date().getTime();
+            const oneDay = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+            let endTime = localStorage.getItem('promoEndTime');
+            
+            if (!endTime) {
+                // First time - set end time to 24 hours from now
+                endTime = now + oneDay;
+                localStorage.setItem('promoEndTime', endTime);
+            } else {
+                endTime = parseInt(endTime);
+                // If time has expired, reset the timer
+                if (endTime < now) {
+                    endTime = now + oneDay;
+                    localStorage.setItem('promoEndTime', endTime);
+                }
+            }
+            
+            // Show popup after a short delay on every page load
+            setTimeout(() => {
+                promoPopup.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                // Start main countdown when popup is shown
+                const mainCountdown = setInterval(() => {
+                    if (!updateCountdown(endTime, false)) {
+                        clearInterval(mainCountdown);
+                    }
+                }, 1000);
+            }, 1000);
+            
+            // Start mini countdown in header
+            promoMini.classList.remove('hidden');
+            const miniCountdown = setInterval(() => {
+                if (!updateCountdown(endTime, true)) {
+                    clearInterval(miniCountdown);
+                }
+            }, 1000);
+            
+            // Close button
+            closeBtn.addEventListener('click', function() {
+                promoPopup.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close when clicking outside
+            promoPopup.addEventListener('click', function(e) {
+                if (e.target === promoPopup) {
+                    promoPopup.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Lazy load Google Maps
+            const mapContainer = document.getElementById('map-container');
+            if (mapContainer) {
+                const loadMap = () => {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.245960674093!2d-9.23086!3d32.29459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDE3JzQwLjUiTiA5wrAxMyc1MS4xIlc!5e0!3m2!1sen!2sma!4v1620000000000!5m2!1sen!2sma';
+                    iframe.width = '100%';
+                    iframe.height = '100%';
+                    iframe.style.border = '0';
+                    iframe.allowFullscreen = '';
+                    iframe.loading = 'lazy';
+                    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+                    
+                    mapContainer.innerHTML = '';
+                    mapContainer.appendChild(iframe);
+                };
+
+                // Only load map when it's about to come into view
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        loadMap();
+                        observer.disconnect();
+                    }
+                }, {
+                    rootMargin: '200px',
+                    threshold: 0.01
+                });
+
+                observer.observe(mapContainer);
+
+                // Fallback for browsers without IntersectionObserver
+                if (!('IntersectionObserver' in window)) {
+                    loadMap();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
