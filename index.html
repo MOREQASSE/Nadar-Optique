@@ -68,12 +68,12 @@
     </div>
 
     <!-- Header -->
-    <header class="fixed w-full z-40 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+    <header class="fixed w-full z-40 bg-black/90 backdrop-blur-md shadow-sm transition-all duration-300">
         <div class="container mx-auto px-6 py-2">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <a href="#" class="flex items-center">
-                    <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 aspect-square rounded-full overflow-hidden mr-2 sm:mr-3 flex-shrink-0">
                         <img src="images/logo bgr.webp" alt="Nadar Optique Logo" class="w-full h-full object-cover">
                     </div>
                     <span class="text-xl md:text-2xl font-heading font-bold text-primary">Nadar Optique</span>
@@ -88,11 +88,11 @@
                 
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex space-x-10">
-                    <a href="#home" class="nav-link text-dark hover:text-accent font-medium">Accueil</a>
-                    <a href="#services" class="nav-link text-dark hover:text-accent font-medium">Services</a>
-                    <a href="#gallery" class="nav-link text-dark hover:text-accent font-medium">Galerie</a>
-                    <a href="#brands" class="nav-link text-dark hover:text-accent font-medium">Marques</a>
-                    <a href="#contact" class="nav-link text-dark hover:text-accent font-medium">Contact</a>
+                    <a href="#home" class="nav-link text-white hover:text-accent active:text-accent font-medium">Accueil</a>
+                    <a href="#services" class="nav-link text-white hover:text-accent active:text-accent font-medium">Services</a>
+                    <a href="#gallery" class="nav-link text-white hover:text-accent active:text-accent font-medium">Galerie</a>
+                    <a href="#brands" class="nav-link text-white hover:text-accent active:text-accent font-medium">Marques</a>
+                    <a href="#contact" class="nav-link text-white hover:text-accent active:text-accent font-medium">Contact</a>
                 </nav>
                 
                 <!-- Mobile Menu Button -->
@@ -1111,54 +1111,63 @@ document.addEventListener('DOMContentLoaded', function() {
             const promoMini = document.getElementById('promoMini');
             const promoMiniTime = document.getElementById('promoMiniTime');
             
-            // Countdown function for both popup and mini promo
+            // Cache DOM elements and constants
+            const HOUR_MS = 1000 * 60 * 60;
+            const MINUTE_MS = 1000 * 60;
+            const SECOND_MS = 1000;
+            const ONE_DAY_MS = 24 * HOUR_MS;
+            const STORAGE_KEY = 'promoEndTime';
+            
+            // Format time helper
+            const pad = num => String(num).padStart(2, '0');
+            
+            // Initialize countdown
+            function initCountdown() {
+                const now = Date.now();
+                let endTime = parseInt(localStorage.getItem(STORAGE_KEY) || '0');
+                
+                // Reset timer if expired or not set
+                if (!endTime || endTime < now) {
+                    endTime = now + ONE_DAY_MS;
+                    localStorage.setItem(STORAGE_KEY, endTime.toString());
+                }
+                
+                return endTime;
+            }
+            
+            // Update countdown display
             function updateCountdown(endTime, isMini = false) {
-                const now = new Date().getTime();
+                const now = Date.now();
                 const distance = endTime - now;
                 
+                // If countdown is over, reset it
                 if (distance < 0) {
-                    if (isMini) {
-                        promoMini.classList.add('hidden');
-                    } else {
-                        document.getElementById('countdown').innerHTML = "L'offre a expiré";
-                    }
+                    const newEndTime = now + ONE_DAY_MS;
+                    localStorage.setItem(STORAGE_KEY, newEndTime.toString());
+                    if (isMini) promoMiniTime.textContent = '00:00:00';
                     return false;
                 }
                 
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                // Calculate and format time
+                const hours = Math.floor(distance / HOUR_MS);
+                const minutes = Math.floor((distance % HOUR_MS) / MINUTE_MS);
+                const seconds = Math.floor((distance % MINUTE_MS) / SECOND_MS);
                 
                 if (isMini) {
-                    promoMiniTime.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    promoMiniTime.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
                 } else {
-                    const countdownElements = document.querySelectorAll('#countdown > div');
-                    if (countdownElements.length >= 5) {
-                        countdownElements[0].firstElementChild.textContent = hours.toString().padStart(2, '0');
-                        countdownElements[2].firstElementChild.textContent = minutes.toString().padStart(2, '0');
-                        countdownElements[4].firstElementChild.textContent = seconds.toString().padStart(2, '0');
+                    const countdownEls = document.querySelectorAll('#countdown > div');
+                    if (countdownEls.length >= 5) {
+                        countdownEls[0].firstElementChild.textContent = pad(hours);
+                        countdownEls[2].firstElementChild.textContent = pad(minutes);
+                        countdownEls[4].firstElementChild.textContent = pad(seconds);
                     }
                 }
                 return true;
             }
             
-            // Check for existing countdown or start a new one
-            const now = new Date().getTime();
-            const oneDay = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-            let endTime = localStorage.getItem('promoEndTime');
-            
-            if (!endTime) {
-                // First time - set end time to 24 hours from now
-                endTime = now + oneDay;
-                localStorage.setItem('promoEndTime', endTime);
-            } else {
-                endTime = parseInt(endTime);
-                // If time has expired, reset the timer
-                if (endTime < now) {
-                    endTime = now + oneDay;
-                    localStorage.setItem('promoEndTime', endTime);
-                }
-            }
+            // Initialize and start countdown
+            const endTime = initCountdown();
             
             // Show popup after a short delay on every page load
             setTimeout(() => {
